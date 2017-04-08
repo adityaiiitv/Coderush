@@ -1,0 +1,63 @@
+//	AUTHOR: TEAM CORE DUMPERS
+ALGORITHM:FACTORIAL
+INPUT:num
+OUTPUT:ans
+	IF num-<0 || num=1
+		ans<-1
+		RETURN 0
+	END IF
+	himani<-(num*log(num))-num+(0.5*log((44*num)/7))
+	IF num>5 	 
+	himani<-himani/2
+	END IF
+        ELSE
+        himani<-himani+1
+        start<-0
+	
+	WHILE num>0
+                IF start=0								
+			n<-num
+			pos<-himani-1
+			WHILE n!=0
+	    	        	ans[pos]<-(n%10)
+				n<-n/10
+				DECREAMENT pos
+			END WHILE
+			INCREAMENT start
+			END IF
+		ELSE IF start!=0
+			FOR i=0 to himani	                      
+			new_cum[i]<-0
+	        	n<-num
+			pos<-himani-1
+			WHILE n!=0
+				new_cum[pos]<-n%10
+				n<-n/10
+				DECREAMENT pos
+			END WHILE
+				
+			FOR i=0 to himani
+			result[i]<-0			
+			pos<-himani-1
+				
+			WHILE pos>=0
+			carry<-0
+			p<-0
+				FOR ans_pos=himani-1 to ans_pos>=0
+					result[pos-p]+<-carry
+				        mul<-((new_cum[pos])*(ans[ans_pos]))
+					result[pos-p]+=mul
+					carry<-result[pos-p]/10
+					result[pos-p]<-(result[pos-p]%10)
+					INCREAMENT p
+				DECREAMENT pos
+			
+				FOR  i=0 to himani
+				ans[i]<-result[i]
+				END WHILE
+			DECREAMENTnum
+              END ELSE IF
+          END FOR
+          OUTPUT ans
+	  RETURN 0
+//	END OF ALGO

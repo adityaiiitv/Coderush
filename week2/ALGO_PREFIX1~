@@ -1,0 +1,45 @@
+//	AUTHOR: TEAM CORE DUMPERS
+ALGORITHM :PREFIX
+INPUT:o and n
+OUTPUT:ans
+o <- 0
+n <- 0
+
+FOR i = 0 to 10
+do	op[i] = num[i] = NULL
+
+WHILE choice != RELEASE CLAUSE
+	INPUT choice
+	SWITCH(choice)
+		CASE 1:	ENTER op[o]
+			INCREAMENT o
+		CASE 2:	IF n < o+1 
+				ENTER num[n]
+				INCREAMENT n
+		CASE 3:	RELEASE CLAUSE
+	END SWITCH
+END WHILE
+
+DECREMENT o 
+ans <- 0
+pos <- 0
+
+WHILE o >= 0
+	IF pos=0 
+		IF op[o] = (^^)	                         \\ generic
+			ans = ans + num[pos] (^^) num[pos-1]
+ 		END IF		
+		pos+2 <- pos
+	END IF
+
+	IF pos!=n
+		IF op[o] == (^^))	\\ generic
+			ans = ans (^^) num[pos]
+		END IF		
+		pos+1 <- pos
+	END IF
+	o+1 <- o
+END WHILE
+OUTPUT ans
+RETURN 0
+//	END OF ALGO

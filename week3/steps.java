@@ -1,0 +1,65 @@
+//	AUTHOR: CORE DUMPERS
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class steps{
+
+public static void main(String[] args)
+{  	
+	int n;
+	Scanner scan = new Scanner (System.in);
+    System.out.println("Enter the number : ");
+    n = scan.nextInt();
+    //decompose(n);
+    System.out.println("Number of Steps : "+decompose(n));
+    
+}
+//function to find min. steps of number using dynamic programming
+public static int decompose(int n) 
+{
+	//'steps' array will store min. steps of all numbers from 1 to n 
+    int steps [] = new int[n+1];
+    int i;
+
+	//calculating min. steps and storing them in array
+    for( i=2;i<=n;i++) 
+    {
+        int min = n;
+        if(i%2==0) 
+        {
+            min = Math.min(min,steps[i/2]);
+        }
+        if(i%3==0) 
+        {
+            min = Math.min(min,steps[i/3]);
+        }
+       
+        min = Math.min(min,steps[i-1]);
+        steps[i] = min + 1;
+    }
+    int k =n;
+	
+	//printing steps 
+    System.out.println("Steps:");
+    while(k>1) 
+    {
+        if(k%3==0&&steps[k/3]+1==steps[k]) 
+        {
+            System.out.println("div 3");
+            k=k/3;
+        }
+        else if(k%2==0&&steps[k/2]+1==steps[k]) 
+        {
+            System.out.println("div 2");
+            k=k/2;
+        }
+        else {
+            System.out.println("minus 1");
+            k=k-1;
+        }
+    }
+
+    return(steps[n]);
+
+}
+}

@@ -1,0 +1,63 @@
+// AUTHOR:	TEAM CORE DUMPERS
+
+input:	2 dimesional array that gives the pattern(arr[74][11])
+output:	length of tile(l),breadth of tile(b),size of each tile
+
+for(each element)
+	complete[74][11] <- 0;
+end for
+
+enter the pattern;
+
+for i=0 to 11
+	for j=0 to 74
+		if(arr[j][i] in any of these{.,j,d,c,i,k,e,b})
+			display tiles
+		end if
+	end for
+end for
+
+zero_flag <- 0
+
+while(zero_flag==0)
+	flag <- 0
+	for i=0 to 74
+		for j=0 to 11
+			if(complete[i][j]==0)
+				zero_flag <- 0
+				increment flag
+			end if
+		end for
+	end for
+
+	if(flag!=0)
+		for i=0 to 74
+			for j=0 to 11
+				if(complete[i][j]==0)
+					l <- i
+					b <- j
+					while(arr[i][b]!='.')
+						increment b
+					end while
+					while(arr[l][j]!='.')
+						increment l
+					end while
+					for k=i to l
+						for m=j to b
+							complete[k][m]=1
+						end for
+					end for
+					output<<"size"l-i,b-j
+					output<<"location"i,j
+				end if
+			end for
+		end for
+	end if
+	else if(flag==0)
+		increment zero_flag
+		break
+	end if
+end while
+return 0
+
+// end of algorithm

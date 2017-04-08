@@ -1,0 +1,45 @@
+//	AUTHOR: CORE DUMPERS
+
+input: n
+output: decompose(n) or steps[n]
+main function starts
+	enter n
+	output<< number of steps << decompose(n)
+end main function
+
+
+method decompose starts
+	steps[n+1]
+	// MAIN CALCULATION
+	for i=2 to n
+		min <- n
+		if(i%2==0)
+			min = min of(min,steps[i/2])
+		end if
+		if(i%3==0)
+			min = min of(min,steps[i/3])
+		end if
+		min = min of(min,steps[i-1])
+		steps[i] <- min+1
+	end for
+
+	k <- n
+	// PRINTING STEPS
+	while(k>1)
+		if(k%3==0&&steps[k/3]+1==steps[k])
+			output<< div 3
+			k <- k/3
+		end if
+		else if(k%2==0&&steps[k/2]+1==steps[k])
+			output<< div 2
+			k <- k/2
+		end if
+		else
+			output<< minus 1
+			k <- k-1
+		end else
+	end while
+return(steps[n])
+end method decompose
+
+// END OF ALGORITHM
